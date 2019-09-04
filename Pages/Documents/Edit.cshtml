@@ -1,0 +1,95 @@
+﻿@page
+@model WebApi.Pages.Documents.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+<h2>Edit</h2>
+<h4>Documents</h4>
+<hr />
+<div class=" container ">
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Documents.Id" />
+                <input type="hidden" asp-for="Documents.IdFkuNavigation.Login" />
+                <div class="form-group">
+                    <label asp-for="Documents.IdFku" class="control-label"></label>
+                    <input asp-for="Documents.IdFku" class="form-control" />
+                    <span asp-validation-for="Documents.IdFku" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Documents.NumerKlienta" class="control-label"></label>
+                    <input asp-for="Documents.NumerKlienta" class="form-control" />
+                    <span asp-validation-for="Documents.NumerKlienta" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Documents.DataDokumentu" class="control-label"></label>
+                    <input asp-for="Documents.DataDokumentu" class="form-control" />
+                    <span asp-validation-for="Documents.DataDokumentu" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Documents.Nazwa" class="control-label"></label>
+                    <input asp-for="Documents.Nazwa" class="form-control" />
+                    <span asp-validation-for="Documents.Nazwa" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Zapisz" class="btn btn-default" name="sub1" />
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Utworzył
+                        </th>
+                        <th>
+                            Cena Netto
+                        </th>
+                        <th>
+                            Cena Brutto
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.Documents.IdFkuNavigation.Login)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.nettoDokument)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.bruttoDokument)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 padTop"><button type="button" class="btn btn-info">Dodaj rzecz</button></div>
+        <form method="post" type=hidden>
+            <input type="hidden" asp-for="Documents.Id" />
+            <div class="form-group col-md-2 ">
+                <label asp-for="Things.NazwaArtykulu" class="control-label">Nazwa</label>
+                <select asp-for="Things.NazwaArtykulu" class="form-control" asp-items="@ViewBag.NazwaArtykulu"></select>
+            </div>
+            <div class="form-group col-md-2">
+                <label class="control-label">Ilość</label>
+                <input asp-for="DocumentsThings.Ilosc" type="number" class="form-control" />
+            </div>
+            <div class="form-group col-md-2">
+                <input asp-page-handler="Add" type="submit" value="Ok" class="btn btn-default" name="sub2" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

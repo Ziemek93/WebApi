@@ -1,0 +1,125 @@
+﻿@page
+@model WebApi.Pages.Documents.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+<h2>Details</h2>
+<h4>Documents</h4>
+<hr />
+<div class=" container">
+    <div class="row">
+        <div class="col-md-4">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Documents.NumerKlienta)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Documents.NumerKlienta)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Documents.DataDokumentu)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Documents.DataDokumentu)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Documents.Nazwa)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Documents.Nazwa)
+                </dd>
+            </dl>
+            <div>
+                <a asp-page="./Edit" asp-route-id="@Model.Documents.Id">Edit</a>
+                <a asp-page="./Index">Back to List</a>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Utworzył<!--@Html.DisplayNameFor(model => model.DocumentInfo[0].NazwaArtykulu)-->
+                        </th>
+                        <th>
+                            Cena Netto <!--@Html.DisplayNameFor(model => model.DocumentInfo[0].Ilosc)-->
+                        </th>
+                        <th>
+                            Cena Brutto <!--@Html.DisplayNameFor(model => model.DocumentInfo[0].CenaBrutto)-->
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.Documents.IdFkuNavigation.Login)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.nettoDokument)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.bruttoDokument)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nazwa Artykułu<!--@Html.DisplayNameFor(model => model.DocumentInfo[0].NazwaArtykulu)-->
+            </th>
+            <th>
+                Ilość <!--@Html.DisplayNameFor(model => model.DocumentInfo[0].Ilosc)-->
+            </th>
+            <th>
+                Cena Brutto <!--@Html.DisplayNameFor(model => model.DocumentInfo[0].CenaBrutto)-->
+            </th>
+            <th>
+                Cena Netto  <!-- @Html.DisplayNameFor(model => model.DocumentInfo[0].CenaNetto)-->
+            </th>
+            <th>
+                Id dokumentu  <!-- @Html.DisplayNameFor(model => model.DocumentInfo[0].IdFkd)-->
+            </th>
+            <th>
+                Id produktu <!--@Html.DisplayNameFor(model => model.DocumentInfo[0].IdFkt)-->
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.DocumentInfo.FirstOrNull() != null)
+        {
+            foreach (var item in Model.DocumentInfo)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NazwaArtykulu)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ilosc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CenaBrutto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CenaNetto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdFkd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdFkt)
+                    </td>
+                    <td>
+                        <a asp-page-handler="Remove" asp-route-id="@item.Id">Delete</a>
+                        @*<input asp-page-handler="Add" type="submit" value="Ok" class="btn btn-default" name="sub2" />*@
+                    </td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>

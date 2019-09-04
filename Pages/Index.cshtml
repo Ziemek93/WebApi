@@ -1,0 +1,66 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <link href="~/css/form.css" rel="stylesheet" type="text/css" />
+</asp:Content>
+<div class="form">
+    <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Sign Up</a></li>
+        <li class="tab"><a href="#login">Log In</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="signup">
+            <h1>Sign Up for Free</h1>
+            <form action="/" method="post">
+                <div class="top-row">
+                    <div class="field-wrap">
+                        <label asp-for="Users.Name" class="control-label ">
+                            <span asp-validation-for="Users.Name" class="text-danger req">Imię</span>
+                        </label>
+                        <input asp-for="Users.Name" class="form-control" required autocomplete="off" />
+                    </div>
+                    <div class="field-wrap">
+                        <label asp-for="Users.Login" class="control-label ">
+                            <span asp-validation-for="Users.Login" class="text-danger req">Login</span>
+                        </label>
+                        <input asp-for="Users.Login" class="form-control" required autocomplete="off" />
+                    </div>
+                </div>
+                <div class="field-wrap">
+                    <label asp-for="Users.Password" class="control-label ">
+                        <span asp-validation-for="Users.Password" class="text-danger req">Hasło</span>
+                    </label>
+                    <input asp-for="Users.Password" class="form-control" required autocomplete="off" />
+                </div>
+                <button type="submit" class="button button-block">Rejestracja</button>
+            </form>
+        </div>
+        <div id="login">
+            <h1>Witaj Ponownie!</h1>
+            <form action="/" method="post">
+                <div class="field-wrap">
+                    <label asp-for="Users.Login" class="control-label ">
+                        <span asp-validation-for="Users.Login" class="text-danger req">Login</span>
+                    </label>
+                    <input asp-for="Users.Login" class="form-control" required autocomplete="off" />
+                </div>
+                <div class="field-wrap">
+                    <label asp-for="Users.Password" class="control-label ">
+                        <span asp-validation-for="Users.Password" class="text-danger req">Hasło</span>
+                    </label>
+                    <input asp-for="Users.Password" class="form-control" required autocomplete="off" />
+                </div>
+                <button class="button button-block" />Zaloguj</button>
+
+            </form>
+        </div>
+    </div><!-- tab-content -->
+</div> <!-- /form -->
+@section Scripts {
+    <environment names="Development">
+        <script type="text/javascript" src="@Url.Content("~/js/form.js")" asp-append-version="true"></script>
+    </environment>
+}
