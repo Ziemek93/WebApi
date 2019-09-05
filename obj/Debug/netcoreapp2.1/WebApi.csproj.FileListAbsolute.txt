@@ -14,8 +14,6 @@ C:\Users\Ziemowit\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.Asse
 C:\Users\Ziemowit\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.TagHelpers.input.cache
 C:\Users\Ziemowit\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.TagHelpers.output.cache
 C:\Users\Ziemowit\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorCoreGenerate.cache
-C:\Users\Ziemowit\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\Razor\Pages\About.g.cshtml.cs
-C:\Users\Ziemowit\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\Razor\Pages\Contact.g.cshtml.cs
 C:\Users\Ziemowit\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\Razor\Pages\Error.g.cshtml.cs
 C:\Users\Ziemowit\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\Razor\Pages\Index.g.cshtml.cs
 C:\Users\Ziemowit\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\Razor\Pages\Privacy.g.cshtml.cs
@@ -35,3 +33,4 @@ C:\Users\Ziemowit\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\Razor\Pages
 C:\Users\Ziemowit\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\Razor\Pages\Documents\Details.g.cshtml.cs
 C:\Users\Ziemowit\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\Razor\Pages\Documents\Edit.g.cshtml.cs
 C:\Users\Ziemowit\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\Razor\Pages\Documents\Index.g.cshtml.cs
+C:\Users\Ziemowit\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\Razor\Pages\Documents\About.g.cshtml.cs

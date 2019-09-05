@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Pages\Documents\About.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Pages\Documents\DeleteDocTh.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

@@ -84,22 +84,11 @@ namespace WebApi.Pages.Documents
         public async Task<IActionResult> OnPostAsync()
         {
 
-            //Documents.Id = DocumentId ?? 0;
-            //  var data = _context.Documents.First(a => a.Id == id)
-
-
-            // { NumerKlienta = Documents.NumerKlienta, DataDokumentu = Documents.DataDokumentu, Nazwa = Documents.Nazwa };
 
             var update = _context.Documents.First(a => a.Id == Documents.Id);
             update.NumerKlienta = Documents.NumerKlienta;
             update.DataDokumentu = Documents.DataDokumentu;
             update.Nazwa = Documents.Nazwa;
-            // _context.SaveChanges();
-            //  _context.Attach(Documents).State = EntityState.Modified; // tu wchodzi wszystko z posta
-
-            //   var author = context.Authors.First(a => a.AuthorId == 1);
-            //   author.FirstName = "Bill";
-            //   context.SaveChanges();
             try
             {
                 await _context.SaveChangesAsync();
@@ -126,9 +115,6 @@ namespace WebApi.Pages.Documents
 
             int IdT = Int32.Parse(Request.Form["Things.NazwaArtykulu"]);
 
-            //Ilosc
-            //Things = await _context.Things.FirstOrDefaultAsync(m => m.NazwaArtykulu == Things.NazwaArtykulu);
-
             if (_context.DocumentsThings.Any(dt => dt.IdFkd == Documents.Id && dt.IdFkt == IdT))
             {
                 var update = _context.DocumentsThings.First(dt => dt.IdFkd == Documents.Id && dt.IdFkt == IdT);
@@ -148,19 +134,6 @@ namespace WebApi.Pages.Documents
                 _context.Entry(create).State = EntityState.Added;
             }
 
-            // var variable = _context.DocumentsThings.First(a => a.IdFktNavigation.NazwaArtykulu == Things.NazwaArtykulu);
-
-            //DocumentsThings.IdFkd = DocumentId ?? 0;
-
-            //   DocumentsThings.IdFkt = _context.Things()
-            //  _context.Attach(DocumentsThings).State = EntityState.Modified;
-
-            //var dept = new Department()
-            //{
-            //    Name = "Designing"
-            //};
-            //context.Entry(dept).State = EntityState.Added;
-            //context.SaveChanges();
 
             try
             {
@@ -177,10 +150,8 @@ namespace WebApi.Pages.Documents
                     throw;
                 }
             }
-            //            query = query.Where(a => a.IdFkd == id).DefaultIfEmpty(); //oddzielenie rzeczy po otwartym id dokumentu
 
             return RedirectToPage("./Index");
-            //return RedirectToPage("./Details/?id=" + IdD);
         }
 
         private bool DocumentsExists(int id)

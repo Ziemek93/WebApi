@@ -1,14 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApi.Models
 {
-    public partial class GetThings
+    public partial class LoginTo
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        [Required(ErrorMessage = "Proszę wprowadzić nazwę PRODUKTU.")]
-        public string NazwaArtykulu { get; set; }
+
+
+        [Required(ErrorMessage = "Proszę wprowadzić LOGIN.")]
+        [Display(Name = "Login")]
+        public string Login { get; set; }
+        [Required(ErrorMessage = "Proszę wprowadzić HASŁO.")]
+
+        [Display(Name = "Password")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Display(Name = "Zapamiętaj mnie")]
+        public bool RememberMe { get; set; }
 
     }
 }
