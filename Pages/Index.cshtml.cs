@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +24,8 @@ namespace WebApi.Pages
         }
 
         public Models.Users Users { get; set; }
-
+        public Models.RepoDetails details { get; set; }
+        public IList<Models.RepoDetails> detailsl { get; set; }
 
         public void OnGet()
         {
@@ -35,7 +38,7 @@ namespace WebApi.Pages
             var content = client.DownloadString(url);
 
             content = "[" + content + "]";
-
+            Debug.WriteLine(content);
             var serializer = new DataContractJsonSerializer(typeof(List<RepoDetails>));
 
             var ms = new MemoryStream(Encoding.Unicode.GetBytes(content));
@@ -43,8 +46,13 @@ namespace WebApi.Pages
             var contributors = (List<RepoDetails>)serializer.ReadObject(ms);
             contributors.ForEach(Console.WriteLine);
 
+            Debug.WriteLine(contributors[0].Created_at + "  L_____________________");
+
+
 
         }
+
+
         public async Task<IActionResult> OnPostLog()
         {
             if (!ModelState.IsValid)
@@ -104,6 +112,38 @@ namespace WebApi.Pages
             //}
 
             return RedirectToPage("./Index");
+        }
+    }
+    [DataContract]
+    internal class Contributor1
+    {
+        [DataMember(Name = "login")]
+        public string Login { get; set; }
+        [DataMember(Name = "contributions")]
+        public short Contributions { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Login,20}: {Contributions} contributions";
+        }
+    }
+    [DataContract]
+    public partial class Contributor2
+    {
+        [DataMember(Name = "name")]
+        public string Name { get; set; }
+
+        [DataMember(Name = "created_at")]
+        public string Created_at { get; set; }
+
+        [DataMember(Name = "pushed_at")]
+        public string Pushed_at { get; set; }
+
+
+
+        public override string ToString()
+        {
+            return $"Name: {Name} \n Created at: {Created_at} \n Pushed at {Pushed_at}";
         }
     }
 

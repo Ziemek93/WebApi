@@ -29,10 +29,7 @@
                     @Html.DisplayFor(model => model.Documents.Nazwa)
                 </dd>
             </dl>
-            <div>
-                <a asp-page="./Edit" asp-route-id="@Model.Documents.Id">Edit</a>
-                <a asp-page="./Index">Back to List</a>
-            </div>
+
         </div>
         <div class="col-md-8">
             <table class="table">
@@ -115,7 +112,6 @@
                     </td>
                     <td>
                         <a asp-page-handler="Remove" asp-route-id="@item.Id">Delete</a>
-                        @*<input asp-page-handler="Add" type="submit" value="Ok" class="btn btn-default" name="sub2" />*@
                     </td>
                 </tr>
 
@@ -123,3 +119,7 @@
         }
     </tbody>
 </table>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Documents.Id">Edit</a>
+    <a asp-page="./Index">Back to List</a>
+</div>

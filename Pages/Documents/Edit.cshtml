@@ -69,22 +69,26 @@
             </table>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-2 padTop"><button type="button" class="btn btn-info">Dodaj rzecz</button></div>
-        <form method="post" type=hidden>
-            <input type="hidden" asp-for="Documents.Id" />
-            <div class="form-group col-md-2 ">
-                <label asp-for="Things.NazwaArtykulu" class="control-label">Nazwa</label>
-                <select asp-for="Things.NazwaArtykulu" class="form-control" asp-items="@ViewBag.NazwaArtykulu"></select>
+    <div class="panel panel-default">
+        <div class="panel-body"><h4>Dodaj rzecz</h4></div>
+        <div class="panel-heading">
+            <div class="row panel-body">
+                <form method="post" type=hidden>
+                    <input type="hidden" asp-for="Documents.Id" />
+                    <div class="form-group col-md-4 ">
+                        <label asp-for="Things.NazwaArtykulu" class="control-label">Nazwa</label>
+                        <select asp-for="Things.NazwaArtykulu" class="form-control" asp-items="@ViewBag.NazwaArtykulu"></select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Ilość</label>
+                        <input asp-for="DocumentsThings.Ilosc" type="number" class="form-control" />
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input asp-page-handler="Add" type="submit" value="Dodaj" class="btn btn-default btn-block" name="sub2" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group col-md-2">
-                <label class="control-label">Ilość</label>
-                <input asp-for="DocumentsThings.Ilosc" type="number" class="form-control" />
-            </div>
-            <div class="form-group col-md-2">
-                <input asp-page-handler="Add" type="submit" value="Ok" class="btn btn-default" name="sub2" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 <div>

@@ -40,16 +40,6 @@ namespace WebApi.Pages.Documents
             Documents = await _context.Documents
                 .Include(d => d.IdFkuNavigation).FirstOrDefaultAsync(m => m.Id == id);
 
-            //Things = await _context.Things
-            //.Include(s => s.DocumentsThings).ToListAsync();
-
-
-
-
-
-            //var test = _context.Things.Include(s => s.DocumentsThings).FirstOrDefault();
-
-            //IQueryable<Models.DocumentInfo>;
             var query = (from g in _context.DocumentsThings
                          from u in _context.Things.Where(a => a.Id == g.IdFkt).DefaultIfEmpty()
                          select new Models.DocumentInfo()
@@ -63,23 +53,18 @@ namespace WebApi.Pages.Documents
                              CenaNetto = u.CenaNetto
                          }
                              ).Where(a => a.IdFkd == id);
-            query = query.Where(a => a.IdFkd == id).DefaultIfEmpty(); //oddzielenie rzeczy po otwartym id dokumentu
-
+            query = query.Where(a => a.IdFkd == id).DefaultIfEmpty();
 
 
             DocumentInfo = await query.AsNoTracking().ToListAsync();
 
-            // query.DefaultIfEmpty();
-            //query.FirstOrNull();
+
             if (DocumentInfo.FirstOrNull() != null)
             {
                 documentPrice();
             }
 
-            //if (DocumentInfo.Count >= 1)
-            //{
-            //    documentPrice();
-            //}
+
 
             if (Documents == null)
             {

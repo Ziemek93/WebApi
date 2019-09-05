@@ -1,15 +1,13 @@
 ﻿@page
 @model WebApi.Pages.Documents.AboutModel
 @{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = "About repositority";
 }
 <h2>@ViewData["Title"]</h2>
-<p>Use this area to provide additional information.</p>
 <div class="panel panel-default">
+    <div class="panel-body"><h4>Name: @Html.DisplayFor(model => model.RepoDetails[0].Name)</h4></div>
     <div class="panel-heading">
-        @Html.DisplayNameFor(model => model.RepoDetails[1].Pushed_at)
+        <div class="panel-body"><p>Created: @Html.DisplayFor(model => model.RepoDetails[0].Created_at)</p></div>
+        <div class="panel-body"><p>Last push: @Html.DisplayFor(model => model.RepoDetails[0].Pushed_at)</p></div>
     </div>
-    <div class="panel-body">Created: 312123123</div>
-    <div class="panel-body">Last push: 231231231</div>
-
 </div>
