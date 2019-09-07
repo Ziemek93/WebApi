@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Runtime.Serialization.Json;
@@ -35,14 +34,7 @@ namespace WebApi.Pages.Documents
             var myData = (List<Models.RepoDetails>)serializer.ReadObject(ms);
             myData.ForEach(Console.WriteLine);
             RepoDetails = myData;
-            Debug.WriteLine(RepoDetails[0].Name + " xxx");
-            Debug.WriteLine(RepoDetails[0].Created_at + " xxx");
-            Debug.WriteLine(RepoDetails[0].Pushed_at + " xxx");
-            foreach (var x in myData)
-            {
 
-                Debug.WriteLine(x + "  L_____________________");
-            }
 
             return Page();
         }

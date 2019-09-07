@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +32,22 @@ namespace WebApi
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AuthorizePage("/Documents/Create");
+                options.Conventions.AuthorizePage("/Documents/Edit");
+                options.Conventions.AuthorizePage("/Documents/Delete");
+                options.Conventions.AuthorizePage("/Documents/Index");
+                options.Conventions.AllowAnonymousToPage("/Index");
+            })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options =>
+        {
+            options.LoginPath = "/Index";
+        });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,8 +66,9 @@ namespace WebApi
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseAuthentication();
             app.UseMvc();
+
         }
     }
 }

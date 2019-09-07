@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "3d650778e3500094e38cb51398f5ded5c197beae"
+    "signature": "763d5aea4f814e9dacc6e2325a899f5e53671af9"
   },
   "compilationOptions": {
     "defines": [
@@ -24,16 +24,33 @@
     ".NETCoreApp,Version=v2.1": {
       "WebApi/1.0.0": {
         "dependencies": {
+          "Baseclass.Contrib.Nuget.Output": "2.4.3",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.9"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.9",
+          "libsodium-net": "0.10.0"
         },
         "runtime": {
           "WebApi.dll": {}
         },
         "compile": {
           "WebApi.dll": {}
+        }
+      },
+      "Baseclass.Contrib.Nuget.Output/2.4.3": {},
+      "libsodium-net/0.10.0": {
+        "dependencies": {
+          "Baseclass.Contrib.Nuget.Output": "2.4.3"
+        },
+        "runtime": {
+          "lib/Net40/Sodium.dll": {
+            "assemblyVersion": "0.10.0.0",
+            "fileVersion": "0.10.0.0"
+          }
+        },
+        "compile": {
+          "lib/Net40/Sodium.dll": {}
         }
       },
       "Microsoft.AspNetCore.Razor.Design/2.1.2": {},
@@ -3461,6 +3478,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Baseclass.Contrib.Nuget.Output/2.4.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7U4hVBXUDryAIKTuZdJcWVweOFmlNwewUVY+9WuRrysY0xVGPk+AGSDiR39BtzDNK3+FeLXhPYpfBiZYd0itfQ==",
+      "path": "baseclass.contrib.nuget.output/2.4.3",
+      "hashPath": "baseclass.contrib.nuget.output.2.4.3.nupkg.sha512"
+    },
+    "libsodium-net/0.10.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-m+gyjWTh8NN79lwfI6X6mxhQPhH2z6dsnfOk/w6bK0rWCuGL9RmC3K3adWCD4F+vJGbpq46TcRa+wGvPnrLTyQ==",
+      "path": "libsodium-net/0.10.0",
+      "hashPath": "libsodium-net.0.10.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor.Design/2.1.2": {
       "type": "package",

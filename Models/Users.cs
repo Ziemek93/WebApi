@@ -13,16 +13,16 @@ namespace WebApi.Models
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required(ErrorMessage = "Proszę wprowadzić IMIĘ.")]
 
+        [Required(ErrorMessage = "Proszę wprowadzić IMIĘ.")]
         [Display(Name = "Imie")]
         public string Name { get; set; }
-        [Required(ErrorMessage = "Proszę wprowadzić LOGIN.")]
 
+        [Required(ErrorMessage = "Proszę wprowadzić LOGIN.")]
         [Display(Name = "Login")]
         public string Login { get; set; }
-        [Required(ErrorMessage = "Proszę wprowadzić HASŁO.")]
 
+        [Required(ErrorMessage = "Proszę wprowadzić HASŁO.")]
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }

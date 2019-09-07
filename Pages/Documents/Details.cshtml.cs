@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 
@@ -13,6 +14,7 @@ namespace WebApi.Pages.Documents
     public class DetailsModel : PageModel
     {
         private readonly WebApi.Models.MagazynContext _context;
+        Regex regexItem = new Regex("^[a-zA-Z0-9 ]*$");
 
         public DetailsModel(WebApi.Models.MagazynContext context)
         {
@@ -32,7 +34,7 @@ namespace WebApi.Pages.Documents
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
+            if (id == null || !regexItem.IsMatch(id.ToString()))
             {
                 return NotFound();
             }
@@ -75,7 +77,9 @@ namespace WebApi.Pages.Documents
         public async Task<IActionResult> OnGetRemove(int? id)
         {
 
-            if (id == null)
+
+
+            if (id == null || !regexItem.IsMatch(id.ToString()))
             {
                 return NotFound();
             }

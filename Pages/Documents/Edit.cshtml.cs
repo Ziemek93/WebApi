@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using WebApi.Models;
 
@@ -13,6 +14,8 @@ namespace WebApi.Pages.Documents
 {
     public class EditModel : PageModel
     {
+        Regex regexItem = new Regex("^[a-zA-Z0-9 ]*$");
+
         private readonly WebApi.Models.MagazynContext _context;
 
         public EditModel(WebApi.Models.MagazynContext context)
@@ -36,7 +39,9 @@ namespace WebApi.Pages.Documents
         public async Task<IActionResult> OnGetAsync(int? id)
         {
 
-            if (id == null)
+
+
+            if (id == null || !regexItem.IsMatch(id.ToString()))
             {
                 return NotFound();
             }
@@ -125,7 +130,7 @@ namespace WebApi.Pages.Documents
                 var create = new DocumentsThings()
                 {
                     IdFkd = Documents.Id,
-                    IdFkt = Int32.Parse(Request.Form["Things.NazwaArtykulu"]),
+                    IdFkt = IdT,   //Int32.Parse(Request.Form["Things.NazwaArtykulu"]),
                     Ilosc = DocumentsThings.Ilosc
                 };
 
